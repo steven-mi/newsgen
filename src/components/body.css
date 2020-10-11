@@ -1,0 +1,79 @@
+.newsgen-textarea-source{
+    resize: none;
+    width: 90%;
+    height: 80%;
+    background: #7E7F9A;
+    line-height: 100%;
+    border: none;
+
+    margin-left: 5%;
+
+    font-size: 18px;
+}
+
+.newsgen-textarea-target{
+    resize: none;
+    width: 95%;
+    height: 80%;
+    background: #7E7F9A;
+    line-height: 100%;
+    border: none;
+
+    font-size: 18px;
+    pointer-events: none;
+
+}
+
+.newsgen-p{
+    margin-top: 5%;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #EB9486;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.newsgen-p-source{
+    margin-top: 5%;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #F9F8F8;
+
+    margin-left: 5%;
+    margin-bottom: 5px;
+}
+
+.newsgen-p-target{
+    margin-top: 5%;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #F9F8F8;
+
+    margin-bottom: 5px;
+}
+
+
+
+.newsgen-layout-p-sameline {
+    display: flex;
+    align-items: center;
+}
+
+/*
+ Below are CSS settings, which changes the default color values of the ant-design styles
+ */
+.ant-layout-content {
+    background: #272838;
+    color: #F9F8F8;
+    min-height: 120px;
+    line-height: 120px;
+}

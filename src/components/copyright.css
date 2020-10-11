@@ -1,0 +1,10 @@
+
+
+/*
+ Below are CSS settings, which changes the default color values of the ant-design styles
+ */
+.ant-layout-footer{
+    background: #EB9486;
+    color: #F9F8F8;
+}
+

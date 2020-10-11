@@ -1,0 +1,35 @@
+.logo {
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    float: left;
+
+    color: #F9F8F8;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 37px;
+}
+
+/*
+ Below are CSS settings, which changes the default color values of the ant-design styles
+ */
+.ant-layout-header {
+    background: #272838;
+}
+
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+    background: #272838;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    background: #272838;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+    background: #eb9486;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+    float: right;
+}
