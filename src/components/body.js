@@ -14,26 +14,24 @@ class Body extends React.Component {
         this.state = {
             inputText: '',
             predictedText: '',
-            modelName: 'model-2020'
+            modelList: [],
+            modelName: 'tfx',
         }
+        this.getAllModels()
+        this.getModel()
     }
 
     onClick = (key) => {
-        this.setState({modelName: key.key})
+        this.setModel(key.key)
     };
 
-    menu = (
+    menu = (object) => (
         <Menu onClick={this.onClick}>
-            <Menu.Item key="OpenAI model">
-                OpenAI model
-            </Menu.Item>
-            <Menu.Item key="HTW Model">
-                HTW Model
-            </Menu.Item>
-            <Menu.Item key="German Model">
-                German Model
-            </Menu.Item>
-            {/*<Menu.Item danger>a danger item</Menu.Item>*/}
+            {object.state.modelList.map((model) =>
+                <Menu.Item key={model}>
+                    {model}
+                </Menu.Item>
+            )}
         </Menu>
     );
 
@@ -41,6 +39,35 @@ class Body extends React.Component {
     handleChange(event) {
         this.setState({inputText: event.target.value})
         this.postRequestGPT2(event.target.value)
+    }
+
+    async setModel(id) {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+        };
+        this.setState({modelName: id})
+        await fetch('http://localhost:9000/model/' + id.toString(), requestOptions);
+    }
+
+    async getAllModels() {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        };
+        const response = await fetch('http://localhost:9000/models', requestOptions);
+        const data = await response.json();
+        this.setState({modelList: data})
+    }
+
+    async getModel() {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        };
+        const response = await fetch('http://localhost:9000/model', requestOptions);
+        const data = await response.json();
+        this.setState({modelName: data})
     }
 
     async postRequestGPT2(text) {
@@ -69,12 +96,12 @@ class Body extends React.Component {
                     <Col span={12}>
                         <div className="newsgen-layout-p-sameline ">
                             <p className="newsgen-p-target">Generate text with: </p>
-                            <Dropdown overlay={this.menu} trigger={['click']}>
-                                <a className="newsgen-p-model"
+                            <Dropdown overlay={this.menu(this)} trigger={['click']}>
+                                <p className="newsgen-p-model"
                                    onClick={e => e.preventDefault()}>
                                     {this.state.modelName}
                                     <DownOutlined/>
-                                </a>
+                                </p>
                             </Dropdown>
                         </div>
                         <textarea className="newsgen-textarea-target"

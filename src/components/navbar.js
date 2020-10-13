@@ -11,8 +11,20 @@ class Navbar extends React.Component {
             <Header>
                 <div className="logo">newsgen</div>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item><a href="https://github.com/newspipe">code</a></Menu.Item>
-                    <Menu.Item>models</Menu.Item>
+                    <Menu.Item>
+                        <a href="https://github.com/newspipe"
+                           style={{display: "table-cell"}} target="_blank"
+                           rel="noopener noreferrer">
+                            code
+                        </a>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <a href="https://github.com/NewsPipe/gpt2-tfx-pipeline/releases"
+                           style={{display: "table-cell"}} target="_blank"
+                           rel="noopener noreferrer">
+                            models
+                        </a>
+                    </Menu.Item>
                 </Menu>
             </Header>
         );
