@@ -15,7 +15,7 @@ class Body extends React.Component {
             inputText: '',
             predictedText: '',
             modelList: [],
-            modelName: 'tfx',
+            modelName: '',
         }
         this.getAllModels()
         this.getModel()
