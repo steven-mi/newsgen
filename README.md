@@ -1,4 +1,4 @@
-# Newsgen
+# newsgen
 
 ![](.github/imgs/dashboard.gif)
 
