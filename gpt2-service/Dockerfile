@@ -27,3 +27,4 @@ WORKDIR /
 COPY . ./
 RUN sh setup.sh
 ENTRYPOINT sbt run
+
