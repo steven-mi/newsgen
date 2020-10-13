@@ -47,7 +47,7 @@ class Body extends React.Component {
             headers: {'Content-Type': 'application/json'},
         };
         this.setState({modelName: id})
-        await fetch('http://localhost:9000/model/' + id.toString(), requestOptions);
+        await fetch('http://gpt2_service:9000/model/' + id.toString(), requestOptions);
     }
 
     async getAllModels() {
@@ -55,7 +55,7 @@ class Body extends React.Component {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch('http://localhost:9000/models', requestOptions);
+        const response = await fetch('http://gpt2_service:9000/models', requestOptions);
         const data = await response.json();
         this.setState({modelList: data})
     }
@@ -65,7 +65,7 @@ class Body extends React.Component {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch('http://localhost:9000/model', requestOptions);
+        const response = await fetch('http://gpt2_service:9000/model', requestOptions);
         const data = await response.json();
         this.setState({modelName: data})
     }
@@ -78,7 +78,7 @@ class Body extends React.Component {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({"text": text})
             };
-            const response = await fetch('http://localhost:9000/predict_dummy', requestOptions);
+            const response = await fetch('http://gpt2_service:9000/predict_dummy', requestOptions);
             const data = await response.json();
             this.setState({predictedText: data.prediction})
         }
