@@ -1,6 +1,10 @@
-# Newsgen Frontend
+# Newsgen
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Newsgen is a web application for generating German newspaper articles, created using a React. In the backend following services are available:
+- [gpt2-service-scala](https://github.com/NewsPipe/gpt2-service-scala): A service to generate texts. It is written in Scala by using the frameworks Tensorflow Java and Play
+- ...
+
+The whole application is dockerized and can be started with docker-compose. A deployment to a Kubernetes cluster is in progress.
 
 ## Available Scripts
 
