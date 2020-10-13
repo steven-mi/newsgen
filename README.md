@@ -18,8 +18,8 @@ docker-compose up
 
 
 ## TODO
-
-- Code refactoring
-- Refine code documentation
 - Add kubernetes config
+- Code documentation refinement 
+- Lookup React standards and refactor frontend code
+- CI/CD
 
