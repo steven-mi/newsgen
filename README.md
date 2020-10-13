@@ -1,4 +1,4 @@
-# Newsgen
+# newsgen
 
 ![](.github/imgs/dashboard.gif)
 
@@ -22,4 +22,5 @@ docker-compose up
 - Code documentation refinement 
 - Lookup React standards and refactor frontend code
 - CI/CD
-
+- Replace BPE encoder python code with more efficient scala code
+- Production mode for GPT2 service
