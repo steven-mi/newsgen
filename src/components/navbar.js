@@ -11,8 +11,8 @@ class Navbar extends React.Component {
             <Header>
                 <div className="logo">newsgen</div>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item key="3"><a href="https://github.com/newspipe">code</a></Menu.Item>
-                    <Menu.Item key="3">models</Menu.Item>
+                    <Menu.Item><a href="https://github.com/newspipe">code</a></Menu.Item>
+                    <Menu.Item>models</Menu.Item>
                 </Menu>
             </Header>
         );

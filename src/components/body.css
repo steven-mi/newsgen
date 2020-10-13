@@ -1,66 +1,77 @@
-.newsgen-textarea-source{
+.newsgen-textarea-source {
+    display: inline;
     resize: none;
     width: 90%;
-    height: 80%;
+    height: 420px;
+    #width:  calc(45vw - 20px);      /* calc and viewport to the rescue */
+    #height: calc(70vh - 20px);
+
     background: #7E7F9A;
     line-height: 100%;
     border: none;
 
     margin-left: 5%;
 
-    font-size: 18px;
+    font-size: 2.5vw;
+    font-weight: 250;
+    color:#F9F8F8;
 }
 
-.newsgen-textarea-target{
+.newsgen-textarea-target {
+    display: inline;
+
     resize: none;
     width: 95%;
-    height: 80%;
+    height: 420px;
+    #width:  calc(45vw - 20px);      /* calc and viewport to the rescue */
+    #height: calc(70vh - 20px);
+
     background: #7E7F9A;
     line-height: 100%;
     border: none;
 
-    font-size: 18px;
+    font-size: 2.5vw;
+    font-weight: 250;
+    color:#F9F8F8;
     pointer-events: none;
-
 }
 
-.newsgen-p{
+.newsgen-p-model {
     margin-top: 5%;
     font-style: normal;
     font-weight: 300;
-    font-size: 25px;
+    font-size: 3vw;
     line-height: 29px;
 
     color: #EB9486;
-    margin-left: 5px;
-    margin-bottom: 5px;
+    margin-left: 0.5vw;
+    margin-bottom: 1vw;
 }
 
-.newsgen-p-source{
+.newsgen-p-source {
     margin-top: 5%;
     font-style: normal;
     font-weight: 300;
-    font-size: 25px;
+    font-size: 3vw;
     line-height: 29px;
 
     color: #F9F8F8;
 
     margin-left: 5%;
-    margin-bottom: 5px;
+    margin-bottom: 1vw;
 }
 
-.newsgen-p-target{
+.newsgen-p-target {
     margin-top: 5%;
     font-style: normal;
     font-weight: 300;
-    font-size: 25px;
+    font-size: 3vw;
     line-height: 29px;
 
     color: #F9F8F8;
 
-    margin-bottom: 5px;
+    margin-bottom: 1vw;
 }
-
 
 
 .newsgen-layout-p-sameline {
@@ -76,4 +87,19 @@
     color: #F9F8F8;
     min-height: 120px;
     line-height: 120px;
+}
+
+.ant-dropdown-trigger > .anticon.anticon-down, .ant-dropdown-link > .anticon.anticon-down, .ant-dropdown-button > .anticon.anticon-down{
+    font-size: 1.5vw;
+}
+
+.ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title{
+    color: #272838;
+}
+
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
+    background-color: rgba(235,148,134,0.8);
+}
+a:hover{
+    color: #EB9486;
 }
