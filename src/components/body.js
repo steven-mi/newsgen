@@ -71,7 +71,7 @@ class Body extends React.Component {
     }
 
     async postRequestGPT2(text) {
-        if (typeof text === 'string' || text instanceof String) {
+        if (typeof text === 'string' || text instanceof String || text.length > 0) {
             // Simple POST request with a JSON body using fetch
             const requestOptions = {
                 method: 'POST',
