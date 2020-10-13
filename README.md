@@ -23,3 +23,4 @@ docker-compose up
 - Lookup React standards and refactor frontend code
 - CI/CD
 - Replace BPE encoder python code with more efficient scala code
+- Production mode for GPT2 service
