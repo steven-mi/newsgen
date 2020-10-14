@@ -1,0 +1,13 @@
+version: '2'
+services:
+  webapp:
+    build:
+      context: webapp/
+      dockerfile: Dockerfile
+    container_name: webapp
+    ports:
+      - "80:5000"
+    restart: always
+    depends_on:
+      - "gpt2-service"
+    restart: always

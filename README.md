@@ -13,13 +13,15 @@ The whole application is dockerized and can be started with docker-compose. A de
 ```
 git clone https://github.com/NewsPipe/newsgen.git
 cd newsgen
-docker-compose up
 ```
 
+Afterward read the `README.md` at:
+- `webapp`: to start the react frontend
+- `gpt2-service`: to start the scala play service
 
 ## TODO
 - Add kubernetes config
-- Code documentation refinement 
+- Code documentation refinement
 - Lookup React standards and refactor frontend code
 - CI/CD
 - Replace BPE encoder python code with more efficient scala code
