@@ -27,12 +27,11 @@ sbt run
 ```
 
 ## Run in production
-Create a `.env` file with the IP and port of the service. In addition create a token to ensure only authenticated user can use the service.
+Create a `.env` file with the IP and a token for the service. The service runs on port 9000 by default.
 
 ```
 SERVICE_IP=localhost
-SERVICE_PORT=9000
-API_SECRET=QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R
+SERVICE_SECRET=QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R
 ```
 
 ## Available Requests
