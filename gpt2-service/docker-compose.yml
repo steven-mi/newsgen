@@ -13,3 +13,5 @@ services:
       - SERVICE_IP=${SERVICE_IP}
       - SERVICE_PORT=${SERVICE_PORT}
       - SERVICE_SECRET=${SERVICE_SECRET}
+    ports:
+      - "${SERVICE_IP}:${SERVICE_IP}"
