@@ -2,7 +2,7 @@ version: '2'
 services:
   gpt2-service:
     build:
-      context: gpt2-service/
+      context: ./
       dockerfile: Dockerfile
       args:
         - OPENJDK_TAG=8u232
@@ -11,7 +11,6 @@ services:
     restart: always
     environment:
       - SERVICE_IP=${SERVICE_IP}
-      - SERVICE_PORT=${SERVICE_PORT}
       - SERVICE_SECRET=${SERVICE_SECRET}
     ports:
-      - "${SERVICE_IP}:${SERVICE_IP}"
+      - "9000:9000"
