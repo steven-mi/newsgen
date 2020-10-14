@@ -26,5 +26,5 @@ RUN pip3 install --upgrade pip \
 WORKDIR /
 COPY . ./
 RUN sh setup.sh
-ENTRYPOINT sbt run
+ENTRYPOINT sbt clean stage
 
