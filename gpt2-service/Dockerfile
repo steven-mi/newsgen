@@ -28,4 +28,4 @@ COPY . ./
 RUN sh setup.sh
 RUN sbt clean stage
 
-ENTRYPOINT java -jar /target/scala-2.12/gpt2service_2.12-1.0-web-assets.jar
+ENTRYPOINT java -jar /target/scala-2.12/gpt2service_2.12-1.0-web-assets.jar -Dconfig.file=./conf/application.conf
