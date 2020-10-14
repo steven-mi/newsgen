@@ -26,6 +26,8 @@ RUN pip3 install --upgrade pip \
 WORKDIR /
 COPY . ./
 RUN sh setup.sh
-RUN sbt clean stage
+RUN sbt dist
+RUN unzip target/universal/gpt2service-1.0.zip
+RUN chmod u+x ./gpt2service-1.0/bin/gpt2service
 
-ENTRYPOINT java -jar /target/scala-2.12/gpt2service_2.12-1.0-web-assets.jar -Dconfig.file=./conf/application.conf
+ENTRYPOINT ./gpt2service-1.0/bin/gpt2service
