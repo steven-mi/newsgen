@@ -2,9 +2,7 @@
     display: inline;
     resize: none;
     width: 90%;
-    height: 420px;
-    #width:  calc(45vw - 20px);      /* calc and viewport to the rescue */
-    #height: calc(70vh - 20px);
+    height: 35vw;
 
     background: #7E7F9A;
     line-height: 100%;
@@ -12,7 +10,7 @@
 
     margin-left: 5%;
 
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     font-weight: 250;
     color:#F9F8F8;
 }
@@ -22,15 +20,13 @@
 
     resize: none;
     width: 95%;
-    height: 420px;
-    #width:  calc(45vw - 20px);      /* calc and viewport to the rescue */
-    #height: calc(70vh - 20px);
+    height: 35vw;
 
     background: #7E7F9A;
     line-height: 100%;
     border: none;
 
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     font-weight: 250;
     color:#F9F8F8;
     pointer-events: none;

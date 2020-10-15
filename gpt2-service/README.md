@@ -9,11 +9,6 @@ A service to generate texts with GPT-2 written in Scala with Tensorflow Java and
 
 ## Getting started
 
-**Get code**
-```
-https://github.com/NewsPipe/gpt2-service-scala.git
-cd gpt2-service-scala
-```
 **Download model and run tests**
 ```
 sh setup_test.sh
@@ -27,11 +22,9 @@ sbt run
 ```
 
 ## Run in production
-Create a `.env` file with the IP and a token for the service. The service runs on port 9000 by default.
-
+Create a `.env` file with the domain on which the GPT-2 service is available.
 ```
-SERVICE_IP=localhost
-SERVICE_SECRET=QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R
+SERVER_DOMAIN=localhost:9000
 ```
 
 ## Available Requests

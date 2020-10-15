@@ -2,12 +2,11 @@ version: '2'
 services:
   webapp:
     build:
-      context: webapp/
+      context: .
       dockerfile: Dockerfile
     container_name: webapp
     ports:
       - "80:5000"
     restart: always
-    depends_on:
-      - "gpt2-service"
-    restart: always
+    environment:
+      - GPT2_SERVICE_DOMAIN=${GPT2_SERVICE_DOMAIN}

@@ -16,13 +16,19 @@ class Body extends React.Component {
             predictedText: '',
             modelList: [],
             modelName: '',
+            requestURL: 'http://localhost:9000/',
+        }
+        if (process.env.GPT2_SERVICE_DOMAIN !== undefined) {
+            this.state.requestURL = process.env.GPT2_SERVICE_DOMAIN
         }
         this.getAllModels()
         this.getModel()
     }
 
     onClick = (key) => {
-        this.setModel(key.key)
+        if (key.key !== undefined) {
+            this.setModel(key.key)
+        }
     };
 
     menu = (object) => (
@@ -38,7 +44,7 @@ class Body extends React.Component {
 
     handleChange(event) {
         this.setState({inputText: event.target.value})
-        this.postRequestGPT2(event.target.value)
+        this.postRequestGPT2(this.state.inputText)
     }
 
     async setModel(id) {
@@ -47,7 +53,7 @@ class Body extends React.Component {
             headers: {'Content-Type': 'application/json'},
         };
         this.setState({modelName: id})
-        await fetch('http://gpt2_service:9000/model/' + id.toString(), requestOptions);
+        await fetch(this.state.requestURL + 'model/' + this.state.modelName, requestOptions);
     }
 
     async getAllModels() {
@@ -55,7 +61,7 @@ class Body extends React.Component {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch('http://gpt2_service:9000/models', requestOptions);
+        const response = await fetch(this.state.requestURL + 'models', requestOptions);
         const data = await response.json();
         this.setState({modelList: data})
     }
@@ -65,20 +71,21 @@ class Body extends React.Component {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch('http://gpt2_service:9000/model', requestOptions);
+        const response = await fetch(this.state.requestURL + 'model', requestOptions);
         const data = await response.json();
         this.setState({modelName: data})
     }
 
     async postRequestGPT2(text) {
-        if (typeof text === 'string' || text instanceof String || text.length > 0) {
+        text = text.toString()
+        if (text.length > 0) {
             // Simple POST request with a JSON body using fetch
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({"text": text})
             };
-            const response = await fetch('http://gpt2_service:9000/predict_dummy', requestOptions);
+            const response = await fetch(this.state.requestURL + 'predict', requestOptions);
             const data = await response.json();
             this.setState({predictedText: data.prediction})
         }
@@ -105,7 +112,8 @@ class Body extends React.Component {
                             </Dropdown>
                         </div>
                         <textarea className="newsgen-textarea-target"
-                                  defaultValue={this.state.predictedText}/>
+                                  defaultValue={this.state.predictedText}>
+                            </textarea>
                     </Col>
                 </Row>
             </Content>
