@@ -26,7 +26,7 @@ RUN pip3 install --upgrade pip \
 WORKDIR /
 COPY . ./
 RUN sbt dist
-RUN unzip target/universal/gpt2service-1.0.zip
+RUN unzip ./target/universal/gpt2service-1.0.zip
 RUN chmod u+x ./gpt2service-1.0/bin/gpt2service
 RUN sh setup_prod.sh
 
