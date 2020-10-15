@@ -12,5 +12,6 @@ services:
     environment:
       - SERVICE_IP=${SERVICE_IP}
       - SERVICE_SECRET=${SERVICE_SECRET}
-    network_mode: host
+    ports:
+      - 9000:9000
 
