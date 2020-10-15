@@ -1,5 +1,5 @@
 name := "GPT2Service"
-
+maintainer := "s0558366@htw-berlin.de"
 version := "1.0"
 
 lazy val `gpt2service` = (project in file(".")).enablePlugins(PlayScala)
