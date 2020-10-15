@@ -8,6 +8,8 @@ services:
         - OPENJDK_TAG=8u232
         - SBT_VERSION=1.3.13
     container_name: gpt2_service
+    enviroment:
+      - SERVER_DOMAIN=${SERVER_DOMAIN}
     restart: always
     ports:
       - 9000:9000
