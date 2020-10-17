@@ -1,4 +1,4 @@
-# Frontend
+# newsgen webapp
 
 ## Development mode
 
@@ -18,13 +18,16 @@ You will also see any lint errors in the console.
 npm start
 ```
 
-## Production mode without docker
+## Production mode
 
 Create a .env file in which you annotate the domain of the GPT2 services
 
 ```
 GPT2_SERVICE_DOMAIN=localhost:9000
 ```
+
+
+### Without docker
 
 Afterward optimize code for deployment and run app in production mode:
 ```
@@ -34,13 +37,7 @@ npm install -g serve
 serve -l 5000 -s build
 ```
 
-## Production mode with docker
-
-Create a .env file in which you annotate the domain of the GPT2 services
-
-```
-GPT2_SERVICE_DOMAIN=localhost:9000
-```
+### With docker
 
 Afterward start webapp with docker-compose:
 ```
