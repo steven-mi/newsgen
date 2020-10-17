@@ -23,7 +23,7 @@ npm start
 Create a .env file in which you annotate the domain of the GPT2 services
 
 ```
-GPT2_SERVICE_DOMAIN=localhost:9000
+REACT_APP_GPT2_SERVICE_DOMAIN=localhost:9000
 ```
 
 

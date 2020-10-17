@@ -1,7 +1,7 @@
 .newsgen-textarea-source {
     display: inline;
     resize: none;
-    width: 90%;
+    width: 92%;
     height: 35vw;
 
     background: #7E7F9A;
@@ -12,7 +12,7 @@
 
     font-size: 2.2vw;
     font-weight: 250;
-    color:#F9F8F8;
+    color: #F9F8F8;
 }
 
 .newsgen-textarea-target {
@@ -26,9 +26,11 @@
     line-height: 100%;
     border: none;
 
+    margin-right: 5%;
+
     font-size: 2.2vw;
     font-weight: 250;
-    color:#F9F8F8;
+    color: #F9F8F8;
     pointer-events: none;
 }
 
@@ -85,17 +87,18 @@
     line-height: 120px;
 }
 
-.ant-dropdown-trigger > .anticon.anticon-down, .ant-dropdown-link > .anticon.anticon-down, .ant-dropdown-button > .anticon.anticon-down{
+.ant-dropdown-trigger > .anticon.anticon-down, .ant-dropdown-link > .anticon.anticon-down, .ant-dropdown-button > .anticon.anticon-down {
     font-size: 1.5vw;
 }
 
-.ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title{
+.ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title {
     color: #272838;
 }
 
-.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
-    background-color: rgba(235,148,134,0.8);
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+    background-color: rgba(235, 148, 134, 0.8);
 }
-a:hover{
+
+a:hover {
     color: #EB9486;
 }
