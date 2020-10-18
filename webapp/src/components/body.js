@@ -50,8 +50,7 @@ class Body extends React.Component {
     antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
     handleChange(event) {
-        this.setState({inputText: event.target.value});
-        this.postRequestGPT2(this.state.inputText);
+        this.postRequestGPT2(event.target.value);
     }
 
     async setModel(modelName) {
@@ -82,27 +81,30 @@ class Body extends React.Component {
 
     async postRequestGPT2(text) {
         text = text.toString()
-        if (text.length > 0) {
-            // Simple POST request with a JSON body using fetch
+        if (text.length > 0 || !this.state.calculating || text !== this.state.inputText) {
+            this.setState({inputText: text});
+
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'text/plain'},
                 body: text
             };
+
+            let predicted = false;
             this.setState({calculating: true})
-            const response = await fetch(this.state.requestURL + '/gpt2/predict', requestOptions);
-            const data = await response.text();
+            try {
+                const response = await fetch(this.state.requestURL + '/gpt2/predict', requestOptions);
+                const data = await response.text();
+                predicted = true;
+            } catch (error) {
+                console.log(error)
+            }
             this.setState({calculating: false})
-            this.setState({predictedText: data})
+            if (predicted){
+                this.setState({predictedText: data})
+            }
         }
     }
-
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
-    };
-
 
     render() {
         return (

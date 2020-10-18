@@ -20,9 +20,10 @@ Afterward read the `README.md` at:
 - `gpt2-service`: to start the scala play service
 
 ## TODO
+- Add mongoDB to service
 - Add kubernetes config
 - Code documentation refinement
 - Lookup React standards and refactor frontend code
-- CI/CD
+- CI pipeline for webapp
+- CI pipeline for gpt2 service
 - Replace BPE encoder python code with more efficient scala code
-- Production mode for GPT2 service
