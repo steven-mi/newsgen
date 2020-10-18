@@ -26,6 +26,7 @@ Create a `.env` file with the domain on which the GPT-2 service is available.
 ```
 SERVER_DOMAIN=localhost:9000
 ```
+**Note:** If you want to change the port, then you have to adjust the `docker-compose.yml` file.
 
 ## Available Requests
 With cURL we can define requests to our service. Below are some request examples that are supported. Additionally, the assumption is that GPT-2 service can be reached at 'localhost:9000/predict':
