@@ -4,7 +4,9 @@ import './body.css';
 import {Layout} from 'antd';
 import {Row, Col} from 'antd';
 import {Menu, Dropdown} from 'antd';
-import {DownOutlined} from '@ant-design/icons';
+import {DownOutlined, LoadingOutlined} from '@ant-design/icons';
+import {Spin} from 'antd';
+import {Modal} from 'antd';
 
 const {Content} = Layout;
 
@@ -17,6 +19,7 @@ class Body extends React.Component {
             modelList: [],
             modelName: '',
             requestURL: 'http://localhost:9000',
+            calculating: false,
         }
         if (process.env.REACT_APP_GPT2_SERVICE_DOMAIN !== undefined) {
             this.state.requestURL = process.env.REACT_APP_GPT2_SERVICE_DOMAIN
@@ -44,38 +47,36 @@ class Body extends React.Component {
         </Menu>
     );
 
+    antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
     handleChange(event) {
         this.setState({inputText: event.target.value});
         this.postRequestGPT2(this.state.inputText);
     }
 
-    async setModel(id) {
+    async setModel(modelName) {
         const requestOptions = {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
         };
-        this.setState({modelName: id})
-        await fetch(this.state.requestURL + '/model/' + this.state.modelName, requestOptions);
+        this.setState({modelName: modelName})
+        await fetch(this.state.requestURL + '/gpt2/model/' + this.state.modelName, requestOptions);
     }
 
     async getAllModels() {
         const requestOptions = {
             method: 'GET',
-            headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch(this.state.requestURL + '/models', requestOptions);
-        const data = await response.json();
-        this.setState({modelList: data})
+        const response = await fetch(this.state.requestURL + '/gpt2/models', requestOptions);
+        const data = await response.text();
+        this.setState({modelList: data.split(",")})
     }
 
     async getModel() {
         const requestOptions = {
             method: 'GET',
-            headers: {'Content-Type': 'application/json'},
         };
-        const response = await fetch(this.state.requestURL + '/model', requestOptions);
-        const data = await response.json();
+        const response = await fetch(this.state.requestURL + '/gpt2/model', requestOptions);
+        const data = await response.text();
         this.setState({modelName: data})
     }
 
@@ -85,23 +86,39 @@ class Body extends React.Component {
             // Simple POST request with a JSON body using fetch
             const requestOptions = {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({"text": text})
+                headers: {'Content-Type': 'text/plain'},
+                body: text
             };
-            const response = await fetch(this.state.requestURL + '/predict', requestOptions);
-            const data = await response.json();
-            this.setState({predictedText: data.prediction})
+            this.setState({calculating: true})
+            const response = await fetch(this.state.requestURL + '/gpt2/predict', requestOptions);
+            const data = await response.text();
+            this.setState({calculating: false})
+            this.setState({predictedText: data})
         }
     }
+
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
 
     render() {
         return (
             <Content>
+                <Modal visible={this.state.calculating}
+                       footer={null}
+                       closable={false}>
+                    <Spin indicator={this.antIcon} tip="Generating text..." size="large">
+                    </Spin>
+                </Modal>
                 <Row>
                     <Col span={12}>
                         <p className="newsgen-p-source">Generate text from:</p>
                         <textarea className="newsgen-textarea-source"
-                                  onBlur={this.handleChange.bind(this)}/>
+                                  onBlur={this.handleChange.bind(this)}>
+                            </textarea>
                     </Col>
                     <Col span={12}>
                         <div className="newsgen-layout-p-sameline ">

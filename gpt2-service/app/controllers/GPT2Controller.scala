@@ -3,7 +3,7 @@ package controllers
 import java.io.File
 import java.nio.file.Paths
 
-import models.{Encoder, GPT2, GPT2Input}
+import models.{Encoder, GPT2}
 import org.tensorflow.Tensors
 import javax.inject._
 import play.Environment
@@ -33,10 +33,13 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
   var gpt2: GPT2 = new GPT2(modelPath)
 
   def getModels: Action[AnyContent] = Action {
-    Ok(modelNames.mkString(","))
+    val allModels = modelNames.mkString(",")
+    print("All models are: " + allModels + "\n")
+    Ok(allModels)
   }
 
   def getModel: Action[AnyContent] = Action {
+    print("Send model: " + modelName + "\n")
     Ok(modelName)
   }
 
@@ -45,6 +48,7 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
       modelPath = Paths.get(modelDir, modelName).toString
       encoder = new Encoder(resourcePath, modelPath)
       gpt2 = new GPT2(modelPath)
+      print("Set model to " + modelName + "\n")
       Ok(modelName)
     } else {
       BadRequest(modelName + " does not exist")
@@ -55,7 +59,9 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
     val textBody = request.body.asText
     textBody
       .map { text =>
+        print("Working on: " + text + "\n")
         val prediction = predict_helper(text)
+        print("Predicted: " + prediction + "\n")
         Ok(prediction)
       }
       .getOrElse {
@@ -63,16 +69,6 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
       }
   }
 
-  def predict_dummy: Action[AnyContent] = Action { request: Request[AnyContent] =>
-    val textBody = request.body.asText
-    textBody
-      .map { text =>
-        Ok(text)
-      }
-      .getOrElse {
-        BadRequest("Message is empty!")
-      }
-  }
 
   def predict_helper(text: String): String = {
     val encoded_msg = encoder.encode(text)

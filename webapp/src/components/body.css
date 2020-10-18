@@ -7,6 +7,7 @@
     background: #7E7F9A;
     line-height: 100%;
     border: none;
+    opacity: 1;
 
     margin-left: 5%;
 
@@ -102,3 +103,25 @@
 a:hover {
     color: #EB9486;
 }
+
+.ant-modal-content{
+    width: 200px;
+    height: 100px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+
+    background-color: #272838;
+
+    text-align: center;
+    text-shadow: none;
+}
+
+.ant-spin{
+    color: #EB9486;
+    font-size: 17px;
+}
+

@@ -4,7 +4,6 @@
 # ~~~~
 
 POST        /gpt2/predict                 controllers.GPT2Controller.predict
-POST        /gpt2/predict_dummy           controllers.GPT2Controller.predict_dummy
 
 PUT         /gpt2/model/:modelName        controllers.GPT2Controller.setModel(modelName: String)
 GET         /gpt2/models                  controllers.GPT2Controller.getModels
