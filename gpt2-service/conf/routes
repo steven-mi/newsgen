@@ -3,10 +3,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing how to use dependency injection
-POST        /predict              controllers.GPT2Controller.predict
-POST        /predict_dummy        controllers.GPT2Controller.predict_dummy
+POST        /gpt2/predict                 controllers.GPT2Controller.predict
+POST        /gpt2/predict_dummy           controllers.GPT2Controller.predict_dummy
 
-PUT         /model/:id             controllers.GPT2Controller.setModel(id: Int)
-GET         /models               controllers.GPT2Controller.getModels
-GET         /model                controllers.GPT2Controller.getModel
+PUT         /gpt2/model/:modelName        controllers.GPT2Controller.setModel(modelName: String)
+GET         /gpt2/models                  controllers.GPT2Controller.getModels
+GET         /gpt2/model                   controllers.GPT2Controller.getModel

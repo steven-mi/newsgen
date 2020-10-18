@@ -19,60 +19,59 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
 
   val resourcePath: String = env.classLoader.getResource("").getPath
   val modelDir: String = Paths.get(resourcePath, "trained_models").toString
-  var modelIndex: Int = 0
 
   val modelNames: Array[String] = (new File(modelDir))
     .listFiles
     .filter(_.isDirectory)
     .map(_.getName)
 
+  var modelName: String = modelNames(0)
+
   // default model is the first one
-  var modelPath: String = Paths.get(modelDir, modelNames(modelIndex)).toString
+  var modelPath: String = Paths.get(modelDir, modelName).toString
   var encoder: Encoder = new Encoder(resourcePath = resourcePath, modelPath = modelPath)
   var gpt2: GPT2 = new GPT2(modelPath)
 
   def getModels: Action[AnyContent] = Action {
-    Ok(Json.toJson(modelNames))
+    Ok(modelNames.mkString(","))
   }
 
   def getModel: Action[AnyContent] = Action {
-    Ok(Json.toJson(modelNames(modelIndex))).as(JSON)
+    Ok(modelName)
   }
 
-  def setModel(id: Int): Action[AnyContent] = Action {
-    modelIndex = id
-    modelPath = Paths.get(modelDir, modelNames(modelIndex)).toString
-    encoder = new Encoder(resourcePath, modelPath)
-    gpt2 = new GPT2(modelPath)
-    Ok(Json.toJson(modelNames(id)))
+  def setModel(modelName: String): Action[AnyContent] = Action {
+    if (modelNames.contains(modelName)) {
+      modelPath = Paths.get(modelDir, modelName).toString
+      encoder = new Encoder(resourcePath, modelPath)
+      gpt2 = new GPT2(modelPath)
+      Ok(modelName)
+    } else {
+      BadRequest(modelName + " does not exist")
+    }
   }
 
-  def predict: Action[JsValue] = Action(parse.json) { request =>
-    val inputData = request.body.validate[GPT2Input]
-    inputData.fold(
-      errors => {
-        BadRequest(Json.obj("message" -> JsError.toJson(errors)))
-      },
-      input => {
-        val prediction = predict_helper(input.text)
-        print(prediction)
-        Ok(Json.obj(("prediction", prediction)))
+  def predict: Action[AnyContent] = Action { request: Request[AnyContent] =>
+    val textBody = request.body.asText
+    textBody
+      .map { text =>
+        val prediction = predict_helper(text)
+        Ok(prediction)
       }
-    )
+      .getOrElse {
+        BadRequest("Message is empty!")
+      }
   }
 
-  def predict_dummy: Action[JsValue] = Action(parse.json) { request =>
-    val inputData = request.body.validate[GPT2Input]
-    inputData.fold(
-      errors => {
-        BadRequest(Json.obj("message" -> JsError.toJson(errors)))
-      },
-      input => {
-        val prediction = "prediction_dummy"
-        print(prediction)
-        Ok(Json.obj(("prediction", prediction)))
+  def predict_dummy: Action[AnyContent] = Action { request: Request[AnyContent] =>
+    val textBody = request.body.asText
+    textBody
+      .map { text =>
+        Ok(text)
       }
-    )
+      .getOrElse {
+        BadRequest("Message is empty!")
+      }
   }
 
   def predict_helper(text: String): String = {
@@ -84,6 +83,5 @@ class GPT2Controller @Inject()(implicit ec: ExecutionContext,
     prediction_tensor.copyTo(prediction_array)
     encoder.decode(prediction_array(0))
   }
-
 
 }

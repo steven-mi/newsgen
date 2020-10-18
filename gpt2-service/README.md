@@ -34,14 +34,13 @@ With cURL we can define requests to our service. Below are some request examples
 
 ```
 curl -X GET \
-  -H "Content-Type: application/json" \
-  -v "http://localhost:9000/models"
+  -v "http://localhost:9000/gpt2/models"
 ```
 
 This will give you a list with all models:
 
 ```
-["tfmodel", "dummy_model", "boom"]
+tfmodel,dummy_model,boom
 ```
 
 ### Get current model
@@ -50,40 +49,38 @@ With cURL we can define a POST request to our service. The GPT-2 service can be 
 
 ```
 curl -X GET \
-  -H "Content-Type: application/json" \
-  -v "http://localhost:9000/model"
+  -v "http://localhost:9000/gpt2/model"
 ```
 
 This will give you the name of the current model:
 
 ```
-"tfmodel"
+tfmodel
 ```
 
 ### Set model
 
 ```
 curl -X PUT \
-  -H "Content-Type: application/json" \
-  -v "http://localhost:9000/model/1"
+  -v "http://localhost:9000/gpt2/model/boom"
 ```
 
-If successful it will return the model name:
+If successful and model exist, it will return the model name:
 ```
-dummy_model
+boom
 ```
 
 ### Generate text with current model
 
 ```
 curl -X POST \
-  -H "Content-Type: application/json" \
-  -v "http://localhost:9000/predict" \
-  -d '{"text":"Hi I just met you"}'
-```
+  -H "Content-Type: text/plain" \
+  -v "http://localhost:9000/gpt2/predict" \
+  -d "Hi I just met you"
+```"
 
 This will give you a JSON with the generated text:
 
 ```
-{"prediction": "..."}
+Hi I just met you ...
 ```
