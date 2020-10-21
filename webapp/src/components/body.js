@@ -91,10 +91,11 @@ class Body extends React.Component {
             };
 
             let predicted = false;
+            let data;
             this.setState({calculating: true})
             try {
                 const response = await fetch(this.state.requestURL + '/gpt2/predict', requestOptions);
-                const data = await response.text();
+                data = await response.text();
                 predicted = true;
             } catch (error) {
                 console.log(error)
