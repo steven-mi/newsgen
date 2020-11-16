@@ -11,7 +11,7 @@ A service to generate texts with GPT-2 written in Scala with Tensorflow Java and
 
 **Download model and run tests**
 ```
-sh setup_dev.sh
+sh setup_test.sh
 sbt test
 ```
 
