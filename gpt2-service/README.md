@@ -11,7 +11,7 @@ A service to generate texts with GPT-2 written in Scala with Tensorflow Java and
 
 **Download model and run tests**
 ```
-sh setup_test.sh
+sh setup_dev.sh
 sbt test
 ```
 
@@ -77,7 +77,7 @@ curl -X POST \
   -H "Content-Type: text/plain" \
   -v "http://localhost:9000/gpt2/predict" \
   -d "Hi I just met you"
-```"
+```
 
 This will give you a JSON with the generated text:
 
