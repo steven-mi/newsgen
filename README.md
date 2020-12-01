@@ -18,8 +18,3 @@ cd newsgen
 Afterward read the `README.md` at:
 - `webapp`: to start the react frontend
 - `gpt2-service`: to start the scala play service
-
-## TODO
-- Add kubernetes config
-- CI pipeline for webapp
-- Replace BPE encoder python code with more efficient scala code
