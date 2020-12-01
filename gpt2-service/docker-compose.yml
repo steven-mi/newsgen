@@ -10,6 +10,7 @@ services:
     container_name: gpt2_service
     environment:
       - SERVER_DOMAIN=${SERVER_DOMAIN}
+      - SERVER_SECRET=${SERVER_SECRET}
     restart: always
     ports:
       - 9000:9000

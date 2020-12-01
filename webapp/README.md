@@ -6,6 +6,11 @@
 ```
 npm install
 ```
+**Enviroments**
+Create a .env file with:
+```
+GPT2_SERVICE_DOMAIN=localhost:9000
+```
 
 **Run the tests**
 ```

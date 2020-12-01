@@ -25,6 +25,7 @@ sbt run
 Create a `.env` file with the domain on which the GPT-2 service is available.
 ```
 SERVER_DOMAIN=localhost:9000
+SERVER_SECRET=CY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241
 ```
 **Note:** If you want to change the port, then you have to adjust the `docker-compose.yml` file.
 
