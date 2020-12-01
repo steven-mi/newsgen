@@ -22,5 +22,4 @@ Afterward read the `README.md` at:
 ## TODO
 - Add kubernetes config
 - CI pipeline for webapp
-- CI pipeline for gpt2 service
 - Replace BPE encoder python code with more efficient scala code
