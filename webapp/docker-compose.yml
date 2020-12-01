@@ -8,19 +8,18 @@ services:
     restart: always
     environment:
       - GPT2_SERVICE_DOMAIN=${GPT2_SERVICE_DOMAIN}
-
-    nginx:
-      build:
-        context: './nginx-auth'
-        dockerfile: Dockerfile
-      container_name: nginx_container
-      ports:
-        - 5000:80
-        - 8090:8090
-      environment:
-        - BASIC_AUTH_USERNAME=${WEBAPP_USERNAME}
-        - BASIC_AUTH_PASSWORD=${WEBAPP_PASSWORD}
-        - PROXY_PASS=http://webapp:5000
-      depends_on:
-        - "webapp"
-      restart: always
+  nginx:
+    build:
+      context: './nginx-auth'
+      dockerfile: Dockerfile
+    container_name: nginx_container
+    ports:
+      - 5000:80
+      - 8090:8090
+    environment:
+      - BASIC_AUTH_USERNAME=${WEBAPP_USERNAME}
+      - BASIC_AUTH_PASSWORD=${WEBAPP_PASSWORD}
+      - PROXY_PASS=http://webapp:5000
+    depends_on:
+      - "webapp"
+    restart: always
