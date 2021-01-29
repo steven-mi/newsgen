@@ -18,3 +18,6 @@ cd newsgen
 Afterward read the `README.md` at:
 - `webapp`: to start the react frontend
 - `gpt2-service`: to start the scala play service
+
+## License
+Apache License 2.0 see: [LICENSE](LICENSE)
